@@ -4,6 +4,12 @@ pSingle 用于处理异步操作
 pSingle 包裹的异步操作在完成前不会再次执行。   
 只有当 pSingle 包裹的异步操作执行完毕后，pSingle才会使其可能再次运行  
 
+
+### 安装
+```bash
+npm install --save p-single
+```
+
 ### 使用方法
 
 pSingle 接受一个参数，该参数是一个方法，该方法需返回Promise。  
