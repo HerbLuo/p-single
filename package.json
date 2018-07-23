@@ -1,6 +1,6 @@
 {
   "name": "p-single",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "使promise在执行完毕前不会再次执行",
   "main": "index.js",
   "typings": "index.d.ts",

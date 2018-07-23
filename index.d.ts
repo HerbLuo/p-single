@@ -1,3 +1,3 @@
-export declare function pSingle(fn: Function);
+export declare function pSingle<T extends Function>(fn: T): any;
 
-export declare function PSingle(thisBinding: any);
+export declare function PSingle(thisBinding?: any): any;
