@@ -4,6 +4,8 @@ pSingle 用于处理异步操作
 pSingle 包裹的异步操作在完成前不会再次执行。   
 只有当 pSingle 包裹的异步操作执行完毕后，pSingle才会使其可能再次运行  
 
+该方法可减少api的前置（如登陆）或者后置（如刷新token）请求数量。
+
 
 ### 安装
 ```bash
@@ -12,7 +14,7 @@ npm install --save p-single
 
 ### 使用方法
 
-pSingle 接受一个参数，该参数是一个方法，该方法需返回Promise。  
+例1：pSingle 接受一个参数，该参数是一个方法，该方法需返回Promise。  
 
 ```javascript 
 import pSingle from './p-single.js'
@@ -28,7 +30,7 @@ const getAccessToken = pSingle(async (username, password) => {
 })
 ```
 
-如果你使用了 ES Next - decorator，你可以这样使用 pSingle
+例2：如果你使用了 ES Next - decorator，你可以这样使用 pSingle
 
 ```javascript 
 import {PSingle} from './p-single.js'
