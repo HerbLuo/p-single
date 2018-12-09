@@ -3,17 +3,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.PSingle = exports.default = exports.pSingle = void 0;
+
 /**
  * p-single
  * change logs:
  * 2017/11/5 herbluo created
  */
-var pSingle = exports.pSingle = function pSingle(fn) {
+var pSingle = function pSingle(fn) {
   var suspends = [];
   var isRunning = false;
-
   return function () {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
@@ -26,6 +27,7 @@ var pSingle = exports.pSingle = function pSingle(fn) {
         });
         isRunning = false;
       };
+
       var fail = function fail(err) {
         reject(err);
         suspends.forEach(function (_ref2) {
@@ -37,17 +39,25 @@ var pSingle = exports.pSingle = function pSingle(fn) {
 
       if (!isRunning) {
         isRunning = true;
-        fn.apply(undefined, args).then(success, fail);
+        fn.apply(void 0, args).then(success, fail);
       } else {
-        suspends.push({ resolve: resolve, reject: reject });
+        suspends.push({
+          resolve: resolve,
+          reject: reject
+        });
       }
     });
   };
 };
 
-exports.default = pSingle;
-var PSingle = exports.PSingle = function PSingle(thisBinding) {
+exports.pSingle = pSingle;
+var _default = pSingle;
+exports.default = _default;
+
+var PSingle = function PSingle(thisBinding) {
   return function (target, property, descriptor) {
     descriptor.value = pSingle(descriptor.value.bind(thisBinding || target));
   };
 };
+
+exports.PSingle = PSingle;

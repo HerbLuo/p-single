@@ -1,6 +1,6 @@
 {
   "name": "p-single",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "使promise在执行完毕前不会再次执行",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/HerbLuo/p-single#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0"
   }
 }
